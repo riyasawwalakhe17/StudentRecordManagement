@@ -12,19 +12,17 @@ import com.practise.Utility.HibernateUtility;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-    	while (true) {
+public class App {
+	public static void main(String[] args) {
+		while (true) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
 			System.out.println("WELCOME TO STUDENT REPORT MANAGEMENT SYSTEM");
 			System.out.println("Please Select as per Requirement");
-			System.out.println("1. Add Student Data");
-			System.out.println("2. Get All Student Data");
-			System.out.println("3. Get Updated Student Details");
-			System.out.println("4. Get Deleted Student Details");
+			System.out.println("1. Add a student");
+			System.out.println("2. View all students");
+			System.out.println("3. Update marks by student ID");
+			System.out.println("4. Delete a student");
 
 			System.out.println("Please Enter your choice: ");
 			int choice = sc.nextInt();
@@ -32,24 +30,23 @@ public class App
 			UserRepository user = new UserRepository();
 			switch (choice) {
 			case 1:
-				System.out.println("Please Enter User ID: ");
-				int stuid = sc.nextInt();
-				user.addData();
+				user.addData(sc);
 				break;
-				
+
 			case 2:
-				user.getAllData();
+				user.AllData(sc);
 				break;
-				
+
 			case 3:
-				user.getUpdatedData();
+				user.updateData(sc);
 				break;
-				
+
 			case 4:
-				user.getDeletedData();
+				user.deleteData(sc);
 				break;
 			}
-    	}
-        
-    }
+
+		}
+
+	}
 }
