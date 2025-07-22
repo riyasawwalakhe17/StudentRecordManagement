@@ -1,11 +1,14 @@
 package com.practise.Entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "student_details")
+@Table(name = "Students")
 public class Student {
 
 	@Id
@@ -18,6 +21,11 @@ public class Student {
 	private String course;
 	
 	private int marks;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "identity_card_id")
+	private IdentityCard identitycard;
+	
 
 	public int getId() {
 		return id;
@@ -58,12 +66,24 @@ public class Student {
 	public void setMarks(int marks) {
 		this.marks = marks;
 	}
+	
+	
+
+	public IdentityCard getIdentitycard() {
+		return identitycard;
+	}
+
+	public void setIdentitycard(IdentityCard identitycard) {
+		this.identitycard = identitycard;
+	}
 
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", email=" + email + ", course=" + course + ", marks=" + marks
-				+ "]";
+				+ ", identitycard=" + identitycard + "]";
 	}
+
+	
 	
 	
 }
